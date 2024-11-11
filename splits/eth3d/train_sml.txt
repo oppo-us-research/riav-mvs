@@ -1,0 +1,2 @@
+high-res/train/office
+high-res/train/courtyard

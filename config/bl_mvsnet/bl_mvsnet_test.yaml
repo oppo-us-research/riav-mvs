@@ -1,0 +1,24 @@
+##---- Baseline MVSNet ---##
+
+#--- DDP or DP related args ---#
+multiprocessing_distributed: False
+
+# 1/2^i, i=0,1,2,3 for full,half,quarter,eighth scale, respectively;
+depth_map_scale_int: 2 
+
+# network
+network_class_name: 'bl_mvsnet'
+network_sub_class_name: 'bl_mvsnet'
+
+pretrain_mvsnet_path: ''
+## No refine_network module
+#pretrain_mvsnet_path: "saved/pretrained/mvsnet/model_dtu-D192-000014.ckpt"
+
+# -- mvs plane sweeping setup -- #
+depth_binning: 'linear'
+num_depth_bins: 64
+
+#--- save result (for each image) or not ---#
+save_all_results: False
+#save_all_results: True
+

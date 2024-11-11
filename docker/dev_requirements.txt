@@ -1,0 +1,68 @@
+matplotlib>=3.5.1
+nose
+scikit-learn
+scikit-image
+opencv-python
+cython
+numpy==1.26.4
+scipy
+Pillow>=9.0.1
+
+# PyTorch: version 2.2.0
+torch==2.2.0
+torchvision==0.17.0
+torchaudio==2.2.0
+--find-links https://download.pytorch.org/whl/cu121
+
+tensorboard>=2.8.0
+tqdm
+future
+timm
+
+## 3D related
+kornia==0.5.11
+#kornia==0.6.1
+#pytorch3d -f https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py38_cu111_pyt180/download.html
+
+## (Optional) added for baselines, you can skip them;
+# for ESTDepth project, see https://github.com/xxlong0/ESTDepth/;
+path
+natsort
+# for neuralrgbd-master project, see https://github.com/NVlabs/neuralrgbd/;
+ipdb
+
+#for TSDF 3d construction
+pycuda
+numba
+
+#for save model graph
+torchviz>=0.0.2
+graphviz>=0.19.1
+
+# compile cuda code
+cupy-cuda11x
+
+##---- for baseline methods ----
+#for iter_mvs baseline
+plyfile
+# for dtu dataset point cloud evaluation
+open3d
+
+# einops stands for Einstein-Inspired Notation for operations
+einops
+opt_einsum
+
+# A simple experiment configuration system for research
+# yacs: Yet Another Configuration System
+yacs>=0.1.8
+
+# for logging
+loguru>=0.6.0
+
+ninja
+h5py
+termcolor
+
+#Due to error: TypeError: Descriptors cannot not be created directly.
+#protobuf==3.20.*
+

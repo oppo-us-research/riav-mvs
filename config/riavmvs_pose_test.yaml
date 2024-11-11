@@ -1,0 +1,26 @@
+##---- Our raft-based MVS ---##
+#--- DDP or DP related args ---#
+multiprocessing_distributed: False
+
+# network
+network_class_name: 'riav_mvs'
+raft_mvs_type: 'raft_mvs'
+pose_net_type: "resnet_pose"
+find_unused_parameters: True
+
+# -- mvs plane sweeping setup -- #
+raft_depth_init_type: 'none'
+depth_binning: 'inverse'
+num_depth_bins: 64
+
+#--- GRU iteration ---#
+raft_iters: 24 #help='iteration number for depth/flow update';
+
+# for demo video
+#scannet_eval_sampling_type: 'val-all'
+#scannet_eval_sampling_type: 'val-3k'
+#scannet_eval_sampling_type: 'd-kyn3'
+scannet_eval_sampling_type: 'e-s10n3'
+
+# save predicted result for each frame or not;
+save_all_results: False

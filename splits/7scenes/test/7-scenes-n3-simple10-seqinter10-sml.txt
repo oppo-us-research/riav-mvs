@@ -1,0 +1,24 @@
+#scene name,frames indices
+#chess/seq-03,0,10,20
+chess/seq-03,10,20,30
+chess/seq-03,20,30,40
+chess/seq-03,30,40,50
+chess/seq-03,40,50,60
+chess/seq-03,50,60,70
+chess/seq-03,60,70,80
+chess/seq-03,70,80,90
+chess/seq-03,80,90,100
+chess/seq-03,90,100,110
+chess/seq-03,100,110,120
+chess/seq-03,110,120,130
+chess/seq-03,120,130,140
+chess/seq-03,130,140,150
+chess/seq-03,140,150,160
+chess/seq-03,150,160,170
+chess/seq-03,160,170,180
+chess/seq-03,170,180,190
+chess/seq-03,180,190,200
+chess/seq-03,190,200,210
+chess/seq-03,200,210,220
+chess/seq-03,210,220,230
+chess/seq-03,220,230,240

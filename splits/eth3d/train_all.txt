@@ -1,0 +1,20 @@
+#5 low-res scenes
+low-res/train/delivery_area
+low-res/train/electro
+low-res/train/forest
+low-res/train/playground
+low-res/train/terrains
+#13 low-res scenes
+high-res/train/courtyard
+high-res/train/delivery_area
+high-res/train/electro
+high-res/train/facade
+high-res/train/kicker
+high-res/train/meadow
+high-res/train/office
+high-res/train/pipes
+high-res/train/playground
+high-res/train/relief
+high-res/train/relief_2
+high-res/train/terrace
+high-res/train/terrains

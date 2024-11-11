@@ -1,0 +1,3 @@
+#2 scenes for validation
+low-res/train/playground
+low-res/train/terrains

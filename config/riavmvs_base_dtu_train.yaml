@@ -1,0 +1,25 @@
+##---- Our raft-based MVS ---##
+sync_bn: False
+
+# network
+network_class_name: 'riav_mvs'
+raft_mvs_type: 'raft_mvs' # attention to frame f1;
+pose_net_type: "none"
+find_unused_parameters: True
+## pairnet SPP module
+fusion_pairnet_feats: False
+
+# -- mvs plane sweeping setup -- #
+# options include: 'linear', 'merged'
+depth_binning: 'inverse'
+num_depth_bins: 96
+raft_iters: 12
+
+#--- training ---#
+lr_gamma: 0.5
+
+# options include 'sixteenth', 'eighth', 'half' and 'quarter'
+raft_volume_scale: 'quarter'
+
+#--- loss ---#
+loss_type: 'L1-inv'

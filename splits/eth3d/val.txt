@@ -1,0 +1,4 @@
+high-res/train/kicker
+high-res/train/office
+high-res/train/playground
+high-res/train/relief_2

@@ -1,0 +1,6 @@
+#5 low-res scenes
+low-res/train/delivery_area
+low-res/train/electro
+low-res/train/forest
+#low-res/train/playground
+#low-res/train/terrains

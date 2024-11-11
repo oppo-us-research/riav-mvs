@@ -1,0 +1,26 @@
+##---- Baseline MVSNet ---##
+
+#--- DDP or DP related args ---#
+multiprocessing_distributed: False
+
+# 1/2^i, i=0,1,2,3 for full,half,quarter,eighth scale, respectively;
+#depth_map_scale_int: 2 
+
+# network
+network_class_name: 'bl_itermvs'
+network_sub_class_name: 'bl_itermvs_pose_eval'
+network_sub_class_name_str: 'bl_itermvsp'
+
+pretrain_itermvs_path: ''
+our_pretrain_itermvs_path: ''
+pretrain_residual_pose_path: ''
+pretrain_atten_path: ''
+
+# -- mvs plane sweeping setup -- #
+depth_binning: 'inverse'
+num_depth_bins: 32
+
+#--- save result (for each image) or not ---#
+#save_all_results: True
+save_all_results: False
+

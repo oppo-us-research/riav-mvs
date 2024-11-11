@@ -1,0 +1,28 @@
+##---- Baseline PairNet ---##
+
+#--- DDP or DP related args ---#
+multiprocessing_distributed: False
+
+# 1/2^i, i=0,1,2,3 for full,half,quarter,eighth scale, respectively;
+#depth_map_scale_int: 2 
+
+# network
+network_class_name: 'bl_pairnet'
+network_sub_class_name: 'bl_pairnet_eval'
+network_sub_class_name_str: 'bl_pairnet'
+
+pretrain_dvmvs_pairnet_dir: ''
+pretrain_residual_pose_path: ''
+pretrain_atten_path: ''
+
+# -- mvs plane sweeping setup -- #
+depth_binning: 'inverse'
+num_depth_bins: 64
+
+#--- save result (for each image) or not ---#
+#save_all_results: True
+save_all_results: False
+
+#is_zero_mean_normalization: True
+scannet_eval_sampling_type: 'e-s10n3'
+

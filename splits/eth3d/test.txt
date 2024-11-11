@@ -1,0 +1,19 @@
+# 5 scenes
+low-res/test/lakeside
+low-res/test/sand_box
+low-res/test/storage_room
+low-res/test/storage_room_2
+low-res/test/tunnel
+# 12 scenes
+high-res/test/botanical_garden
+high-res/test/boulders
+high-res/test/bridge
+high-res/test/door
+high-res/test/exhibition_hall
+high-res/test/lecture_room
+high-res/test/living_room
+high-res/test/lounge
+high-res/test/observatory
+high-res/test/old_computer
+high-res/test/statue
+high-res/test/terrace_2

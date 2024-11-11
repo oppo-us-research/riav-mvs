@@ -1,0 +1,32 @@
+##---- Baseline MVSNet ---##
+sync_bn: True
+
+multiprocessing_distributed: True
+
+# network
+network_class_name: 'bl_itermvs'
+network_sub_class_name: 'bl_itermvs_atten'
+network_sub_class_name_str: 'bl_itermvsa'
+
+#pretrain_mvsnet_path: ''
+## No refine_network module
+#pretrain_itermvs_path: 'saved/pretrained/itermvs/dtu/model_000015.ckpt'
+pretrain_itermvs_path: ''
+our_pretrain_itermvs_path: ''
+
+# residual posenet module;
+pretrain_residual_pose_path: ''
+#pretrain_atten_path: 'exp77A-ddp-raftpsQr4f1a4G3pairspf-Dil1inv-scanpz2-Z0.25to20-D64-epo20-LR1e-4-p-epo4-8-15-gam0.5-bs56-h256xw256-task-20220417191800-57718-grtwm/ckpt_epoch_007.pth.tar'
+pretrain_atten_path: ''
+
+
+#freeze_layers: 'encoder,depth' # only train pose modules;
+freeze_layers: '' # train all modules;
+
+# -- mvs plane sweeping setup -- #
+depth_binning: 'inverse'
+num_depth_bins: 32
+
+#--- loss ---#
+loss_type: 'L1-inv'
+

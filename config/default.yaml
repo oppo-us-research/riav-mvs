@@ -1,0 +1,232 @@
+# defualt parameters
+seed: 1234
+#seed: null
+
+#choices=["resume", "train", "val", "test", "debug"],
+mode: 'train'
+
+dataset: 'scannet_mea2_npz'
+height: 256
+width: 512
+depth_map_scale_int: 0 # 1/2^i, i=0,1,2,3 for full,half,quarter,eighth scale, respectively;
+
+####################################
+## -- mvs plane sweeping setup -- ##
+####################################
+depth_binning: 'inverse'
+depth_binning_choices: ['linear', 'inverse', "merged"]
+num_depth_bins: 64
+min_depth: 0.25 #meter
+max_depth: 20
+
+##################
+## -- train -- ##
+##################
+
+#--- DDP or DP related args ---#
+local_rank: 0
+num_node: 1
+# url used to set up distributed training
+#dist_url: 'tcp://127.0.0.1:23456' # Failed in StarFire machines;
+dist_url: 'env://' # used in local machines and StarFire machines;
+dist_backend: 'nccl'
+#GPU id to use, if set >= 0, then is_multiprocessing_distributed=false
+gpu_id: -1
+
+# 'if set true, will use multi-processing distributed training to launch '
+# 'N processes per node, which has N GPUs. This is the '
+# 'fastest way to use PyTorch for either single node or '
+# 'multi node data parallel training')
+multiprocessing_distributed: True
+
+# "If true, use sync batch norm for DDP training"
+sync_bn: False
+
+
+#--- checkpoints, log, or resume training ---#
+start_epoch: 0
+
+## "s": step, and "e" for epoch;
+# E.g., 'e1', # 'e1' means 1 epoch; 's1000': means 1000 steps;
+# first steps or epochs to train raft gru, 
+# i.e., with FNet and CNet frozen,
+# due to loading pretrained ckpts for FNet and CNet;
+warmup_raft_gru_training_step: 'e-1' # i.e., no warmup;
+
+#base root dir, with ./logs and ./checkpoints as its sub-directory
+#run_dir: ''
+run_dir: "/nfs/STG/SemanticDenseMapping/changjiang/proj-riav-mvs"
+run_dir2: "/home/ccj/disk2/inno-projects/proj-riav-mvs"
+run_dir3: "/home/notebook/data/personal/US000182/proj-riav-mvs"
+resume_path: ''
+load_weights_path: ''
+
+#--- loss ---#
+loss_no_ssim: True
+loss_type: 'L1-inv'
+#help='loss type on depth or inverse depth'
+loss_type_choices: ['L1', 'L1-inv']
+
+no_ssim: False # if set, disables ssim in the loss;
+w_chamfer: 0 # weight value for chamfer loss for adaptive bins;
+w_nll_loss: 0 # weight value for NLL classification loss";
+is_f1gma: True # apply attention (gma style) to ref frame (i.e., f1)";
+confidence_loss: False #help="use loss on depth confidence";
+mvsdata_nviews: -1
+#help="change loss values in meter to those in milimeter";
+m_2_mm_scale_loss: 1.0
+
+#--- Learning rates etc ---#
+# learning rate decay
+lr_gamma: 0.5
+learning_rate: 1.0e-4
+
+#help="initial learning rate for GRU module",
+learning_rate_gru: -1 # if <0, to disable this arg;
+
+#help="initial learning rate for attention (GMA) module",
+learning_rate_atten: -1 # if <0, to disable this arg;
+
+#help="initial learning rate for pose net"
+learning_rate_pose: -1 # if <0, to disable this arg;
+        
+#help="initial learning rate for depth confidence head";
+learning_rate_conf: -1
+
+lr_scheduler_choices: [ "constant", "piecewise_epoch", "OneCycleLR"]
+#lr_scheduler: "constant"
+#lr_scheduler: "OneCycleLR"
+lr_scheduler: "piecewise_epoch"
+
+lr_epoch_step: "4-8-15" # epochs#15
+#weight_decay: 5e-5
+weight_decay: 0.0
+lr_gamma: 0.5
+#raft_wdecay: 1.0e-5 #'used in AdamW oatimizer'
+raft_wdecay: 5.0e-5 #'used in AdamW oatimizer', following GMA paper;
+
+
+
+##################
+##--- model ---##
+##################
+# "cost volume in 1/2, 1/4, 1/8 or 1/16 scale";
+raft_volume_scale: 'quarter'
+raft_volume_scale_choices: ['half', 'quarter', 'eighth', 'sixteenth']
+
+#help='if true, freeze raft net, only train the refine net'
+freeze_raft_net: False
+
+#--- freeze some layers if set ---#
+freeze_layers: '' # train all modules;
+n_gru_layers: 3 # number of hidden GRU levels;
+n_gru_layers_choices: [1, 3]
+raft_iters: [4,8] # iteration number for depth/flow update;
+
+network_class_name: 'riav_mvs'
+
+raft_mvs_type: 'raft_mvs_asyatt_f1_att' # attention to frame f1;
+
+#which feature network we will use
+fnet_name: 'pairnet_fnet'
+fnet_name_choices: ['raft_fnet', 'pairnet_fnet']
+# if true, fuse pairnet multi-scale featuresi by SPP module
+fusion_pairnet_feats: True
+
+# how to initalize depth before RAFT GRU iteration (default: none)
+raft_depth_init_type: 'none'
+raft_depth_init_type_choices: [
+  "argmin", "soft-argmin", "none", 
+  "soft-argmin-3dcnn"
+  ]
+
+# use loss on depth regressed from cost volume by soft-argmin
+softargmin_loss: True
+
+# pose-net type, use pose-net to predict residual pose to rectify the GT pose;
+pose_net_type: "resnet_pose"
+pose_net_type_choices: ["none", "resnet_pose", "pose_cnn" ]
+
+# our modules
+pretrain_pose_path: ''
+pretrain_atten_path: ''
+
+num_stage: 1
+num_stage_choice: [1, 3]
+
+mViT_scale: 'half'
+mViT_scale_choices: ["full", "half", "quarter", "none"]
+
+
+#--- pretrained ckpt etc ---#
+# path to gma pretrained checkpoint (default: none)
+#gma_pretrained_path: "checkpoints/saved/pretrained/gma/gma-things.pth"
+gma_pretrained_path: ''
+raft_pretrained_path: ''
+# path to pretrained pose net checkpoint (default: none)
+pretrain_pose_ckpt: ''
+pretrain_adabin_ckpt: ''
+pretrain_cnet_ckpt: ''
+pretrain_gru_ckpt: ''
+pretrain_dvmvs_pairnet_dir: ''
+raft_warp_weights_path: ''
+
+#--- baseline est-depth related ---#
+pretrain_estdepth_dir: "checkpoints/saved/pretrained/estdepth/model_000006.ckpt"
+
+# RAFT-Stereo Architecure choices
+raft_dropout: 1.0 # > 0: True, 'used in training'
+raft_loss_gamma: 0.9 # 'exponential weighting on sequence losses'
+
+# apply attention (gma style) to ref frame (i.e., f1)";
+is_f1gma: False 
+# raft-mvs + GMA (attention)
+gma_atten_num_heads: 4
+
+raft_corr_implementation: 'reg' #"reg", "alt", "reg_cuda";
+raft_shared_backbone: False #"use a single backbone for the context and feature encoders";
+raft_corr_levels: 4 # help="number of levels in the correlation pyramid";
+raft_corr_radius: 4 # help="width of the correlation pyramid";
+raft_n_downsample: 2 # help="resolution of the disparity field (1/2^K)";
+raft_slow_fast_gru: False # help="iterate the low-res GRUs more frequently";
+raft_n_gru_layers: 3 #help="number of hidden GRU levels";
+raft_hidden_dims: [128, 128, 128] #help="hidden state and context dimensions";
+
+raft_restore_ckpt: 'checkpoints/saved/pretrained/raft-stereo/raftstereo-sceneflow.pth'
+
+raft_mixed_precision: False
+is_image_net_norm: False
+
+
+##################
+##--- test ---##
+##################
+
+# which gpu will be used for evaluation
+eval_gpu_id: 0
+eval_epoch: 0
+scannet_eval_sampling_type: 'e-s10n3'
+
+# different sampling strategy
+scannet_eval_sampling_type_choices: [
+  'e-s10n3',
+  "e-s10n5",
+  "e-s5n5",
+  "e-s5n3",
+  "e-s20n5",
+  "e-s20n3",
+  "e-s10n3-sml",
+  "d-kyn3",
+  "d-s10n3",
+  "d-kyn2",
+  "val-3k",
+  "val-all",
+  "dummy"
+]
+
+eval_task: 'all' # prediction + evaluation;
+
+# save predicted result for each frame or not;
+save_all_results: False
+eval_split_txt_name: 'test.txt'
+#eval_split_txt_name: 'test_small.txt' # for quick debug;

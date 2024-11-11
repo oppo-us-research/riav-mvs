@@ -1,0 +1,6 @@
+#5 low-res scenes
+#delivery_area
+#electro
+#forest
+playground
+terrains

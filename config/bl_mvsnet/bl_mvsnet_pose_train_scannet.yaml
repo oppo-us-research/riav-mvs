@@ -1,0 +1,39 @@
+##---- Baseline MVSNet ---##
+sync_bn: True
+
+multiprocessing_distributed: True
+#multiprocessing_distributed: False
+#gpu_id: -1
+
+# 1/2^i, i=0,1,2,3 for full,half,quarter,eighth scale, respectively;
+depth_map_scale_int: 2 
+
+# network
+network_class_name: 'bl_mvsnet'
+network_sub_class_name: 'bl_mvsnet_pose'
+network_sub_class_name_str: 'bl_mvsnetp'
+
+#pretrain_mvsnet_path: ''
+## No refine_network module
+pretrain_mvsnet_path: "saved/pretrained/mvsnet/model_dtu-D192-000014.ckpt"
+our_pretrain_mvsnet_path: 'expcvr4B1-bl_mvsnetp-Dll1-scanpz2-Z0.25to20-D64-epo1-LR1e-4-c-bs64-h256xw256-rtxa6ks8/ckpt_epoch_000.pth.tar'
+
+
+# residual posenet module;
+#pretrain_residual_pose_path: 'exp71A-ddp-raftpsQr4G3pairspf-Dil1inv-scanpz2-Z0.25to20-D64-epo2-LR2.5e-5-c-bs40-h256xw256-rtxA6ks3/ckpt_epoch_001.pth.tar'
+pretrain_residual_pose_path: ''
+pretrain_atten_path: ''
+
+
+freeze_layers: '' # train all modules;
+#learning_rate_pose: -1 # if <0, to disable this arg;
+learning_rate_pose: 2.5e-5 # if >0, to enable this arg;
+
+# -- mvs plane sweeping setup -- #
+depth_binning: 'linear'
+#num_depth_bins: 192
+num_depth_bins: 64
+#num_depth_bins: 256 # original mvsnet by Yaoyao
+
+#--- loss ---#
+loss_type: 'L1'

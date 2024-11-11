@@ -1,0 +1,12 @@
+[submodule "third_parties/RAFT_Stereo"]
+	path = third_parties/RAFT_Stereo
+	url = https://github.com/princeton-vl/RAFT-Stereo.git
+[submodule "third_parties/IterMVS"]
+	path = third_parties/IterMVS
+	url = https://github.com/FangjinhuaWang/IterMVS.git
+[submodule "third_parties/ESTDepth"]
+	path = third_parties/ESTDepth
+	url = https://github.com/xxlong0/ESTDepth.git
+[submodule "third_parties/DeepVideoMVS"]
+	path = third_parties/DeepVideoMVS
+	url = https://github.com/ardaduz/deep-video-mvs.git

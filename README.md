@@ -105,7 +105,7 @@ The following datasets are only used for evaluation to show cross-domain general
 
 ### Pretrained Models on ScanNet
 
-You can download the model checkpoints for our method and the baseline methods that we trained from scratch at this [link](https://www.dropbox.com/scl/fi/xhmuqy6jn9ojyijn8qngz/all_ckpts.zip?rlkey=ckcd7bwgzblzpt2mversll2km&st=w8rfodr0&dl=0).
+You can download the model checkpoints for our method and the baseline methods that we trained from scratch at this [link](https://1drv.ms/u/c/339fd99c959aa6e5/EQJ0TUKw_2lHmPxoT9uorFUBlDwASSTkPRhYe7rh2n_YVQ?e=DD9NP8).
 
 Here we provide three varients of the pipeline for ablation, including:
 - V1: `Base model`: our proposed paradigm that iteratively indexes
@@ -121,7 +121,7 @@ Our pretrained models trained on ScanNet training set can be **downloaded** as b
 | Model Variants | V1 `(Base)` | V2 `(+Pose)`  |V3 `(+Pose,Atten` | 
 |----|----|----|----|
 |YAML Config  | `[1]` [riavmvs_base_test.yaml](config/riavmvs_base_test.yaml) | `[2]`[riavmvs_pose_test.yaml](config/riavmvs_pose_test.yaml) | `[3]`[riavmvs_full_test.yaml](config/riavmvs_full_test.yaml)|
-|Checkpoint trained on ScanNet | `[4]`[riavmvs_base_epoch_002.pth.tar](https://www.dropbox.com/scl/fi/l64zmbvbwglz4wido8bke/riavmvs_base_epoch_002.pth.tar?rlkey=35kgvandun8zobddqygtdg0td&st=88l8q8xa&dl=0) | `[5]`[riavmvs_pose_epoch_003.pth.tar](https://www.dropbox.com/scl/fi/azut51e6lsw6c9d43fgti/riavmvs_pose_epoch_003.pth.tar?rlkey=q4o69auavhox6mt9vzw9ennfx&st=vootijux&dl=0) | `[6]`[riavmvs_full_epoch_007.pth.tar](https://www.dropbox.com/scl/fi/hr854bikqg0vk2zyz3ivh/riavmvs_full_epoch_007.pth.tar?rlkey=k5gtvud9ukxh0dzph18sbh96t&st=7i0q3nrc&dl=0) |
+|Checkpoint trained on ScanNet | `[4]`[riavmvs_base_epoch_002.pth.tar](https://1drv.ms/u/c/339fd99c959aa6e5/EeJ5rtYwIthIolmVI4hiD-ABWKDHiaycWjJ3rhgCTHzBRA?e=TOge0G) | `[5]`[riavmvs_pose_epoch_003.pth.tar](https://1drv.ms/u/c/339fd99c959aa6e5/ETw41dqkT-lPmULkOjJIRzYBSxT59EYEYjqQT1IIGbYxhg?e=MajEcX) | `[6]`[riavmvs_full_epoch_007.pth.tar](https://1drv.ms/u/c/339fd99c959aa6e5/EZgpZQP18ZhBpHpnX2SyiqoB3AsXQi5q9Z90LjjrCe-rgw?e=BNdvFN) |
 
 
 ### Finetuned Models on DTU
@@ -132,7 +132,7 @@ Our pretrained models trained on ScanNet are further finetuned on DTU training s
 | Model Variants | V1 `(Base)` |V3 `(+Pose,Atten` | 
 |----|----|----|
 |YAML Config  | `[7]` [riavmvs_base_dtu_test.yaml](config/riavmvs_base_dtu_test.yaml) | see `[3]` above|
-|Checkpoint finetuned on DTU | `[8]`[riavmvs_base_dtu_epoch_04.pth.tar](https://www.dropbox.com/scl/fi/81rsdkqzfzzxigsgrssfa/riavmvs_base_dtu_epoch_04.pth.tar?rlkey=fw69gvtnktqwipguscfc3cd5k&st=u77axfoy&dl=0) | `[9]`[riavmvs_full_dtu_epoch_03.pth.tar](https://www.dropbox.com/scl/fi/c1yytla8ioxg9fvaps691/riavmvs_full_dtu_epoch_03.pth.tar?rlkey=5othxcd3lo9oiz90xqlfclvi2&st=tsvocg5k&dl=0) |
+|Checkpoint finetuned on DTU | `[8]`[riavmvs_base_dtu_epoch_04.pth.tar](https://1drv.ms/u/c/339fd99c959aa6e5/ETXTAh68kwpKsDkRH9E-4bUBNvyGC54YOzeUGVjdQUaFsw?e=HH58eE) | `[9]`[riavmvs_full_dtu_epoch_03.pth.tar](https://1drv.ms/u/c/339fd99c959aa6e5/ETUgSUwbYBRPh1vqQK8C8iYBDfn-hRKbiA3asJx5BskwYg?e=dKvuZs) |
 
 
 ### Key Hyper-Parameters
